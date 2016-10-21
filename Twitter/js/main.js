@@ -1,58 +1,46 @@
-function listarTareas(){
+
 	//Variables
-	var tarea = document.getElementById('tarea').value; //Valor del Textarea
+	var tarea = document.getElementById('tarea'); //Valor del Textarea
 	var btnAgregar = document.getElementById('btnAgregar'); //Valor del boton
 	var lista = document.getElementById('lista');
-	
 
+var agregarTarea = function (){
 
-	
-	//funciones
-	var agregarTarea = function (){
-		var tareaNueva = document.createElement('input');
-		var tareaHecha = document.createElement('i');
-		tareaNueva.type = 'checkbox';
-		tareaHecha.className = 'hecho';
-		tareaHecha.className = 'fa';
-		tareaHecha.className = 'fa-trash-o';
-		tareaHecha.className = 'fa-lg';
-		tareaHecha.setAttribute("aria-hidden", "true");
-		
-		lista.appendChild(tareaNueva);
-		lista.appendChild(tareaHecha);
+	if(tarea.value==""){
+		tarea.setAttribute('placeholder', 'Debes ingresar una tarea');
+		tarea.className = 'error';
+		return false;
+	}
+	console.log("voy agregar tarea");
+	var tareaNueva = document.createElement('ol');
+	var input = document.createElement('input');
+	input.type = 'checkbox';
+	var tareaHecha = document.createElement('i');
+	tareaHecha.className = 'hecho fa fa-trash-o fa-lg';	
+	tareaHecha.setAttribute("aria-hidden", "true");
+	var contenido = document.createTextNode(tarea.value); 
 
-		for (var i = 0; i < hecho.length -1; i++) {
-		hecho[i].addEventListener("click", function(){
-				this.parentNode.removeChild(this);
-			});
+	tareaNueva.appendChild(input);
+	tareaNueva.appendChild(contenido);
+	tareaNueva.appendChild(tareaHecha);
+
+	input.onclick = function(){
+		if(input.checked == true){
+			contenido.parentElement.setAttribute("class","tachado");
+		}else{
+			contenido.parentElement.setAttribute("class","");
 		}
 	};
-
-	// function validarInput(){
-	// 	if()
-	// };
-
-
-	//Eventos
-	//Evento del boton--agrega la nueva tarea
-	btnAgregar.addEventListener('click', agregarTarea);
-	tarea.addEventListener('click', validarInput);
+		
+	tareaHecha.addEventListener("click", function(){
+		console.log("click en el bote")
+		tareaNueva.style.display = "none";
+	});
 	
-	}
-	//Evento del textarea--- verifica que el campo no este vacio
-
-
-
-
-
-
-
-
-
-		// document.getElementsByClassName('error');
-		// 	while(spans.length > 0)	{
-		// 		spans[0].parentElement.removeChild(spans[0]);
-		// 	}
-
-
-
+	tarea.value = "";
+	lista.appendChild(tareaNueva);
+};
+	
+btnAgregar.addEventListener('click', agregarTarea);
+ 
+	

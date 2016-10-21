@@ -1,6 +1,10 @@
 header, .bg-g{
 	background-color: #28a452;
 }
-.t-w{
+*{
 	color:white;
+}
+
+.tachado{
+	text-decoration: line-through;
 }
