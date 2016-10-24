@@ -1,0 +1,15 @@
+#btnAgregar, .mg{
+	margin:1% 0%;
+}
+#input{
+	width: 30% !important;
+}
+
+#paTarjeta{
+	padding: 1% 2%;
+	background-color:gray;
+	width: 20%;
+	display: inline-block;
+	margin-right: 1%;
+	
+}
